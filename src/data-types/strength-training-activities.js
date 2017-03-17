@@ -5,6 +5,10 @@ const GraphQLList = graphql.GraphQLList;
 const GraphQLInt = graphql.GraphQLInt;
 const fetch = require('../helpers/fetch');
 
+const resolveItems = require('../helpers/resolve-items');
+const resolve = resolveItems.resolve;
+const args = resolveItems.args;
+
 const StrengthTrainingSet = new GraphQLObjectType({
 	name: 'StrengthTrainingSet',
 	fields: {
@@ -71,7 +75,9 @@ module.exports = new GraphQLObjectType({
 	fields: {
 		size: { type: GraphQLInt },
 		items: {
-			type: new GraphQLList(StrengthTrainingItem)
+			type: new GraphQLList(StrengthTrainingItem),
+			args,
+			resolve
 		}
 	}
 });

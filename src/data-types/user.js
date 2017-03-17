@@ -5,6 +5,7 @@ const GraphQLString = graphql.GraphQLString;
 const fetch = require('../helpers/fetch');
 const ProfileType = require('./profile');
 const StrengthTrainingActivitiesType = require('./strength-training-activities');
+const FitnessActivitiesType = require('./fitness-activities');
 
 module.exports = new GraphQLObjectType({
 	name: 'User',
@@ -22,6 +23,12 @@ module.exports = new GraphQLObjectType({
 			type: StrengthTrainingActivitiesType,
 			resolve (data, args, req) {
 				return fetch(data.strength_training_activities, req);
+			}
+		},
+		fitness_activities: {
+			type: FitnessActivitiesType,
+			resolve (data, args, req) {
+				return fetch(data.fitness_activities, req);
 			}
 		}
 	}

@@ -1,3 +1,4 @@
 {
-	"SERVER_START": "Server started on port %{port}"
+	"SERVER_START": "Server started on port %{port}",
+	"RUNKEEPER_REQUEST": "Request made to Runkeeper API %{endpoint}"
 }

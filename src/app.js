@@ -1,6 +1,6 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const log = require('./logging');
+const log = require('./helpers/logging');
 const path = require('path');
 
 

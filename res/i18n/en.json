@@ -1,4 +1,120 @@
 {
-	"SERVER_START": "Server started on port %{port}",
-	"RUNKEEPER_REQUEST": "Request made to Runkeeper API %{endpoint}"
+	"GRAPHQL": {
+		"COMMENT": {
+			"COMMENT": "The comment",
+			"NAME": "The display name of the user that left the comment",
+			"TIMESTAMP": "The time at which the comment was posted (e.g., Sat, 1 Jan 2011 00:00:00)",
+			"USERID": "The unique ID for the user that left the comment"
+		},
+		"FITNESS": {
+			"ACTIVITIES": {
+				"ITEMS": "The user’s activities, from newest to oldest",
+				"SIZE": "The total number of fitness activities across all pages"
+			},
+			"CALORIES": {
+				"CALORIES": "The total calories burned since the start of the activity",
+				"TIMESTAMP": "The number of seconds since the start of the activity"
+			},
+			"DISTANCE": {
+				"DISTANCE": "The total distance traveled since the start of the activity, in meters",
+				"TIMESTAMP": "The number of seconds since the start of the activity"
+			},
+			"HEART_RATE": {
+				"HEART_RATE": "The instantaneous heart rate, in beats per minute",
+				"TIMESTAMP": "The number of seconds since the start of the activity"
+			},
+			"IMAGE": {
+				"LATITUDE": "The latitude, in degrees (values increase northward and decrease southward)",
+				"LONGITUDE": "The longitude, in degrees (values increase eastward and decrease westward)",
+				"THUMBNAIL_URI": "The URI of the thumbnail version of the image",
+				"TIMESTAMP": "The number of seconds since the start of the activity",
+				"URI": "The URI of the image"
+			},
+			"ITEM": {
+				"ACTIVITY": "The URL of the user’s public, human-readable page for this activity",
+				"AVERAGE_HEART_RATE": "The user’s average heart rate, in beats per minute (omitted if not available)",
+				"CALORIES": "The sequence of time-stamped caloric burn measurements (empty if not available)",
+				"CLIMB": "The total elevation climbed over the course of the activity, in meters",
+				"COMMENTS": "The comments for the activity",
+				"DISTANCE": "The sequence of time-stamped distance measurements (empty if not available)",
+				"DURATION": "The duration of the activity, in seconds",
+				"ENTRY_MODE": "The mode by which this activity was originally entered, as one of the following values: API, Web",
+				"EQUIPMENT": "The equipment used to complete this activity, as one of the following values: None, Treadmill, Stationary Bike, Elliptical, Row Machine. (Optional; if not specified, None is assumed.)",
+				"HAS_PATH": "The equipment used to complete this activity, as one of the following values: None, Treadmill, Stationary Bike, Elliptical, Row Machine. (Optional; if not specified, None is assumed.)",
+				"HEART_RATE": "The sequence of time-stamped heart rate measurements (empty if not available)",
+				"IMAGES": "The sequence of images along the route (empty if not available)",
+				"IS_LIVE": "Whether this activity is currently being tracked via Runkeeper Live",
+				"NOTES": "Any notes that the user has associated with the activity",
+				"PATH": "The sequence of geographical points along the route (empty for stationary activities)",
+				"SECONDARY_TYPE": "The secondary type of the activity, as a free-form string (max. 64 characters). This field is used only if the type field is Other.",
+				"SHARE": "The visibility of this activity to others, as one of the following values: \"Just Me\", \"Street Team\", \"Everyone\"",
+				"SHARE_MAP": "The visibility of this activity's routes to others, as one of the following values: \"Just Me\", \"Street Team\", \"Everyone\" (omitted if the activity has no routes)",
+				"SOURCE": "The name of the application that last modified this activity",
+				"START_TIME": "The starting time for the activity (e.g., Sat, 1 Jan 2011 00:00:00)",
+				"TOTAL_CALORIES": "The total calories burned (omitted if not available)",
+				"TOTAL_DISTANCE": "The total distance traveled, in meters",
+				"TRACKING_MODE": "The mode by which this activity was originally tracked, as one of the following values: indoor, outdoor",
+				"TYPE": "The type of activity, as one of the following values: Running, Cycling, Mountain Biking, Walking, Hiking, Downhill Skiing, Cross-Country Skiing, Snowboarding, Skating, Swimming, Wheelchair, Rowing, Elliptical, Other, Yoga, Pilates, CrossFit, Spinning, Zumba, Barre, Group Workout, Dance, Bootcamp, Boxing / MMA, Meditation, Strength Training, Circuit Training, Core Strengthening, Arc Trainer, Stairmaster / Stepwell, Sports, Nordic Walking",
+				"USERID": "The unique ID of the user for the activity",
+				"UTC_OFFSET": "The UTC offset of the timezone for the activity"
+			},
+			"PATH": {
+				"ALTITUDE": "The altitude of the point, in meters",
+				"LATITUDE": "The latitude, in degrees (values increase northward and decrease southward)",
+				"LONGITUDE": "The longitude, in degrees (values increase eastward and decrease westward)",
+				"TIMESTAMP": "The number of seconds since the start of the activity",
+				"TYPE": "One of the following values: start, end, gps, pause, resume, manual"
+			}
+		},
+		"PROFILE": {
+			"ATHLETE_TYPE": "One of the following values: Athlete, Runner, Marathoner, Ultra Marathoner, Cyclist, Tri-Athlete, Walker, Hiker, Skier, Snowboarder, Skater, Swimmer, Rower (omitted if not yet specified)",
+			"BIRTHDAY": "The user's birthday (e.g., Sat, 1 Jan 2011 00:00:00) (omitted if not yet specified)",
+			"ELITE": "true if the user subscribes to Runkeeper Elite, false otherwise",
+			"GENDER": "One of the following values: M, F (omitted if not yet specified)",
+			"LARGE_PICTURE": "The URI of the small (600×1800 pixels) version of the user's profile picture on the Runkeeper Web site (omitted if the user has no such picture) Note: The image may be shorter than 1800 pixels in height if the user has provided a smaller picture.",
+			"LOCATION": "The user's geographical location (omitted if not yet specified)",
+			"MEDIUM_PICTURE": "The URI of the small (200×600 pixels) version of the user's profile picture on the Runkeeper Web site (omitted if the user has no such picture) Note: The image may be shorter than 600 pixels in height if the user has provided a smaller picture.",
+			"NAME": "The user's full name (omitted if not yet specified)",
+			"NORMAL_PICTURE": "The URI of the small (100×100 pixels) version of the user's profile picture on the Runkeeper Web site (omitted if the user has no such picture)",
+			"PROFILE": "The URL of the user's public, human-readable profile on the Runkeeper Web site",
+			"SMALL_PICTURE": "The URI of the small (50×50 pixels) version of the user's profile picture on the Runkeeper Web site (omitted if the user has no such picture)"
+		},
+		"STRENGTH_TRAINING": {
+			"ACTIVITIES": {
+				"ITEMS": "The user’s activities, from newest to oldest",
+				"SIZE": "The total number of fitness activities across all pages"
+			},
+			"EXERCISE": {
+				"NOTES": "Any notes for the exercise (max. 1024 characters; optional)",
+				"PRIMARY_MUSCLE_GROUP": "The primary muscle group, as one of the following values: Arms, Chest, Back, Shoulders, Abs, Legs",
+				"PRIMARY_TYPE": "The primary exercise type, as one of the following values: Barbell Curl, Dumbbell Curl, Barbell Tricep Press, Dumbbell Tricep Press, Overhead Press, Wrist Curl, Tricep Kickback, Bench Press, Cable Crossover, Dumbbell Fly, Incline Bench, Dips, Pushup, Pullup, Back Raise, Bent-Over Row, Seated Row, Chinup, Lat Pulldown, Seated Reverse Fly, Military Press, Upright Row, Front Raise, Side Lateral Raise, Snatch, Push Press, Shrug, Crunch Machine, Crunch, Ab Twist, Bicycle Kick, Hanging Leg Raise, Hanging Knee Raise, Reverse Crunch, V Up, Situp, Squat, Lunge, Dead Lift, Hamstring Curl, Good Morning, Clean, Leg Press, Leg Extension, Other",
+				"ROUTINE": "Free-form tag for the routine of which this exercise is a part (max. 32 characters; optional)",
+				"SECONDARY_MUSCLE_GROUP": "The secondary muscle group, as one of the following values: Arms, Chest, Back, Shoulders, Abs, Legs (optional)",
+				"SECONDARY_TYPE": "The secondary exercise type (optional; provides greater detail as free-form text if supplied)",
+				"SETS": "The sets performed during this exercise"
+			},
+			"ITEM": {
+				"COMMENTS": "The comments for the activity",
+				"EXERCISES": "The exercises performed during this strength training activity",
+				"NOTES": "Any notes that the user has associated with the activity (max. 1024 characters; optional)",
+				"SOURCE": "The name of the application that last modified this activity",
+				"START_TIME": "The starting time for the activity (e.g., Sat, 1 Jan 2011 00:00:00)",
+				"TOTAL_CALORIES": "The total calories burned (omitted if not available)",
+				"USERID": "The unique ID of the user for the activity"
+			},
+			"SET": {
+				"NOTES": "Any notes for this set (max. 1024 characters; optional)",
+				"REPETITIONS": "The number of repetitions in this set",
+				"WEIGHT": "The weight for the set, in kg"
+			}
+		},
+		"USER": {
+			"FITNESS_ACTIVITIES": "A description of the users fitness activities",
+			"PROFILE": "A description of a user’s identity, geographical location, and fitness goals",
+			"STRENGTH_TRAINING_ACTIVITIES": "A description of the users strength training activities",
+			"USERID": "The unique ID for the user"
+		}
+	},
+	"RUNKEEPER_REQUEST": "Request made to Runkeeper API %{endpoint}",
+	"SERVER_START": "Server started on port %{port}"
 }

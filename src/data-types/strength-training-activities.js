@@ -6,71 +6,110 @@ const GraphQLInt = graphql.GraphQLInt;
 const fetch = require('../helpers/fetch');
 const CommentType = require('./comment');
 const resolveItems = require('../helpers/resolve-items');
-
+const i18n = require('../helpers/i18n');
 
 const StrengthTrainingSet = new GraphQLObjectType({
 	name: 'StrengthTrainingSet',
 	fields: {
-		weight: { type: GraphQLInt },
-		repetitions: { type: GraphQLInt },
-		notes: { type: GraphQLString}
+		notes: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.SET.NOTES'),
+			type: GraphQLString
+		},
+		repetitions: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.SET.REPETITIONS'),
+			type: GraphQLInt
+		},
+		weight: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.SET.WEIGHT'),
+			type: GraphQLInt
+		}
 	}
 });
 
 const StrengthTrainingExercise = new GraphQLObjectType({
 	name: 'StrengthTrainingExercise',
 	fields: {
-		primary_type: { type: GraphQLString },
-		secondary_type: { type: GraphQLString },
-		primary_muscle_group: { type: GraphQLString },
-		secondary_muscle_group: { type: GraphQLString },
-		routine: { type: GraphQLString },
-		notes: { type: GraphQLString },
-		sets: { type: new GraphQLList(StrengthTrainingSet) }
+		notes: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.NOTES'),
+			type: GraphQLString
+		},
+		primary_muscle_group: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.PRIMARY_MUSCLE_GROUP'),
+			type: GraphQLString
+		},
+		primary_type: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.PRIMARY_TYPE'),
+			type: GraphQLString
+		},
+		routine: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.ROUTINE'),
+			type: GraphQLString
+		},
+		secondary_muscle_group: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.SECONDARY_MUSCLE_GROUP'),
+			type: GraphQLString
+		},
+		secondary_type: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.SECONDARY_TYPE'),
+			type: GraphQLString
+		},
+		sets: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.EXERCISE.SETS'),
+			type: new GraphQLList(StrengthTrainingSet)
+		}
 	}
 });
 
 const StrengthTrainingItem = new GraphQLObjectType({
 	name: 'StrengthTrainingItem',
 	fields: {
-		start_time: { type: GraphQLString },
-		userID: {
-			type: GraphQLString,
-			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.userID);
-			}
-		},
-		total_calories: {
-			type: GraphQLInt,
-			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.total_calories);
-			}
-		},
-		notes: {
-			type: GraphQLString,
-			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.notes);
-			}
-		},
-		source: {
-			type: GraphQLString,
-			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.source);
-			}
-		},
-		exercises: {
-			type: new GraphQLList(StrengthTrainingExercise),
-			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.exercises);
-			}
-		},
 		comments: {
-			type: new GraphQLList(CommentType),
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.COMMENTS'),
 			resolve (parent, args, req) {
 				return fetch(parent.uri, req)
 					.then(d => fetch(d.comments, req))
 					.then(c => c.comments);
-			}
+			},
+			type: new GraphQLList(CommentType)
+		},
+		exercises: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.EXERCISES'),
+			resolve (parent, args, req) {
+				return fetch(parent.uri, req).then(d => d.exercises);
+			},
+			type: new GraphQLList(StrengthTrainingExercise)
+		},
+		notes: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.NOTES'),
+			resolve (parent, args, req) {
+				return fetch(parent.uri, req).then(d => d.notes);
+			},
+			type: GraphQLString
+		},
+		source: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.SOURCE'),
+			resolve (parent, args, req) {
+				return fetch(parent.uri, req).then(d => d.source);
+			},
+			type: GraphQLString
+		},
+		start_time: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.START_TIME'),
+			type: GraphQLString
+		},
+		total_calories: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.TOTAL_CALORIES'),
+			resolve (parent, args, req) {
+				return fetch(parent.uri, req).then(d => d.total_calories);
+			},
+			type: GraphQLInt
+		},
+		userID: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.USERID'),
+			resolve (parent, args, req) {
+				return fetch(parent.uri, req).then(d => d.userID);
+			},
+			type: GraphQLString
 		}
 	}
 });
@@ -79,16 +118,20 @@ const StrengthTrainingItem = new GraphQLObjectType({
 const StrengthTrainingActivities = new GraphQLObjectType({
 	name: 'StrengthTrainingActivities',
 	fields: {
-		size: { type: GraphQLInt },
+		size: {
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ACTIVITIES.SIZE'),
+			type: GraphQLInt,
+		},
 		items: {
-			type: new GraphQLList(StrengthTrainingItem),
 			args: resolveItems.args,
-			resolve: resolveItems.resolve
+			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ACTIVITIES.ITEMS'),
+			resolve: resolveItems.resolve,
+			type: new GraphQLList(StrengthTrainingItem)
 		}
 	}
 });
 
 module.exports = {
-	StrengthTrainingItem,
-	StrengthTrainingActivities
+	StrengthTrainingActivities,
+	StrengthTrainingItem
 };

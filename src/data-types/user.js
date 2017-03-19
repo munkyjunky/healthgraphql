@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const GraphQLObjectType = graphql.GraphQLObjectType;
 const GraphQLString = graphql.GraphQLString;
-
+const i18n = require('../helpers/i18n');
 const fetch = require('../helpers/fetch');
 const ProfileType = require('./profile');
 const StrengthTrainingActivitiesType = require('./strength-training-activities').StrengthTrainingActivities;
@@ -10,26 +10,30 @@ const FitnessActivitiesType = require('./fitness-activities').FitnessActivities;
 module.exports = new GraphQLObjectType({
 	name: 'User',
 	fields: {
-		userID: {
-			type: GraphQLString
-		},
-		profile: {
-			type: ProfileType,
-			resolve (data, args, req) {
-				return fetch(data.profile, req);
-			}
-		},
-		strength_training_activities: {
-			type: StrengthTrainingActivitiesType,
-			resolve (data, args, req) {
-				return fetch(data.strength_training_activities, req);
-			}
-		},
 		fitness_activities: {
-			type: FitnessActivitiesType,
+			description: i18n.t('GRAPHQL.USER.FITNESS_ACTIVITIES'),
 			resolve (data, args, req) {
 				return fetch(data.fitness_activities, req);
-			}
+			},
+			type: FitnessActivitiesType
+		},
+		profile: {
+			description: i18n.t('GRAPHQL.USER.PROFILE'),
+			resolve (data, args, req) {
+				return fetch(data.profile, req);
+			},
+			type: ProfileType
+		},
+		strength_training_activities: {
+			description: i18n.t('GRAPHQL.USER.STRENGTH_TRAINING_ACTIVITIES'),
+			resolve (data, args, req) {
+				return fetch(data.strength_training_activities, req);
+			},
+			type: StrengthTrainingActivitiesType
+		},
+		userID: {
+			description: i18n.t('GRAPHQL.USER.USERID'),
+			type: GraphQLString
 		}
 	}
 });

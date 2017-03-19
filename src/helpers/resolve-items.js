@@ -1,4 +1,3 @@
-const fetch = require('./fetch');
 const graphql = require('graphql');
 const GraphQLInt = graphql.GraphQLInt;
 const GraphQLString = graphql.GraphQLString;
@@ -36,9 +35,9 @@ module.exports = {
 			let items = parent.items.filter(filterItems);
 
 			function getItems (count, next) {
-				return new Promise(res => {
+				return new Promise(resolveItems => {
 
-					fetch(next, req).then(data => { // eslint-disable-line consistent-return
+					req.healthGraphLoader.load(next).then(data => {
 						items = items.concat(data.items).filter(filterItems);
 
 						let stopGettingItems = false;
@@ -50,10 +49,12 @@ module.exports = {
 						}
 
 						if (!stopGettingItems && count > items.length && data.next) {
-							return getItems(count, data.next);
+							return getItems(count, data.next).then(resolveItems);
 						}
 
-					}).then(res);
+						return resolveItems();
+
+					});
 
 				});
 			}

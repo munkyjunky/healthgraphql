@@ -115,6 +115,7 @@
 			"USERID": "The unique ID for the user"
 		}
 	},
-	"RUNKEEPER_REQUEST": "Request made to Runkeeper API %{endpoint}",
+	"HEALTHGRAP_LOADER_REQUEST": "Request made to loader for %{uri}",
+	"HEALTHGRAPH_REQUEST": "Request made to Runkeeper API %{uri}",
 	"SERVER_START": "Server started on port %{port}"
 }

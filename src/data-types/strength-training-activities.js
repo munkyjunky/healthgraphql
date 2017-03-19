@@ -3,7 +3,6 @@ const GraphQLObjectType = graphql.GraphQLObjectType;
 const GraphQLString = graphql.GraphQLString;
 const GraphQLList = graphql.GraphQLList;
 const GraphQLInt = graphql.GraphQLInt;
-const fetch = require('../helpers/fetch');
 const CommentType = require('./comment');
 const resolveItems = require('../helpers/resolve-items');
 const i18n = require('../helpers/i18n');
@@ -66,8 +65,8 @@ const StrengthTrainingItem = new GraphQLObjectType({
 		comments: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.COMMENTS'),
 			resolve (parent, args, req) {
-				return fetch(parent.uri, req)
-					.then(d => fetch(d.comments, req))
+				return req.healthGraphLoader.load(parent.uri)
+					.then(d => req.healthGraphLoader.load(d.comments))
 					.then(c => c.comments);
 			},
 			type: new GraphQLList(CommentType)
@@ -75,21 +74,21 @@ const StrengthTrainingItem = new GraphQLObjectType({
 		exercises: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.EXERCISES'),
 			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.exercises);
+				return req.healthGraphLoader.load(parent.uri).then(d => d.exercises);
 			},
 			type: new GraphQLList(StrengthTrainingExercise)
 		},
 		notes: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.NOTES'),
 			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.notes);
+				return req.healthGraphLoader.load(parent.uri).then(d => d.notes);
 			},
 			type: GraphQLString
 		},
 		source: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.SOURCE'),
 			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.source);
+				return req.healthGraphLoader.load(parent.uri).then(d => d.source);
 			},
 			type: GraphQLString
 		},
@@ -100,14 +99,14 @@ const StrengthTrainingItem = new GraphQLObjectType({
 		total_calories: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.TOTAL_CALORIES'),
 			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.total_calories);
+				return req.healthGraphLoader.load(parent.uri).then(d => d.total_calories);
 			},
 			type: GraphQLInt
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.USERID'),
 			resolve (parent, args, req) {
-				return fetch(parent.uri, req).then(d => d.userID);
+				return req.healthGraphLoader.load(parent.uri).then(d => d.userID);
 			},
 			type: GraphQLString
 		}
@@ -120,7 +119,7 @@ const StrengthTrainingActivities = new GraphQLObjectType({
 	fields: {
 		size: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ACTIVITIES.SIZE'),
-			type: GraphQLInt,
+			type: GraphQLInt
 		},
 		items: {
 			args: resolveItems.args,

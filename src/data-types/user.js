@@ -12,27 +12,30 @@ module.exports = new GraphQLObjectType({
 	fields: {
 		fitness_activities: {
 			description: i18n.t('GRAPHQL.USER.FITNESS_ACTIVITIES'),
-			resolve (data, args, req) {
-				return fetch(data.fitness_activities, req);
+			resolve (parent, args, req) {
+				return fetch('/user', req).then(data => fetch(data.fitness_activities, req));
 			},
 			type: FitnessActivitiesType
 		},
 		profile: {
 			description: i18n.t('GRAPHQL.USER.PROFILE'),
-			resolve (data, args, req) {
-				return fetch(data.profile, req);
+			resolve (parent, args, req) {
+				return fetch('/user', req).then(data => fetch(data.profile, req));
 			},
 			type: ProfileType
 		},
 		strength_training_activities: {
 			description: i18n.t('GRAPHQL.USER.STRENGTH_TRAINING_ACTIVITIES'),
-			resolve (data, args, req) {
-				return fetch(data.strength_training_activities, req);
+			resolve (parent, args, req) {
+				return fetch('/user', req).then(data => fetch(data.strength_training_activities, req));
 			},
 			type: StrengthTrainingActivitiesType
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.USER.USERID'),
+			resolve (parent, args, req) {
+				return fetch('/user', req).then(data => data.userID);
+			},
 			type: GraphQLString
 		}
 	}

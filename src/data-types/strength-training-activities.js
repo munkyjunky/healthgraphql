@@ -4,10 +4,9 @@ const GraphQLString = graphql.GraphQLString;
 const GraphQLList = graphql.GraphQLList;
 const GraphQLInt = graphql.GraphQLInt;
 const fetch = require('../helpers/fetch');
-
+const CommentType = require('./comment');
 const resolveItems = require('../helpers/resolve-items');
-const resolve = resolveItems.resolve;
-const args = resolveItems.args;
+
 
 const StrengthTrainingSet = new GraphQLObjectType({
 	name: 'StrengthTrainingSet',
@@ -35,7 +34,6 @@ const StrengthTrainingItem = new GraphQLObjectType({
 	name: 'StrengthTrainingItem',
 	fields: {
 		start_time: { type: GraphQLString },
-		uri: { type: GraphQLString },
 		userID: {
 			type: GraphQLString,
 			resolve (parent, args, req) {
@@ -65,19 +63,32 @@ const StrengthTrainingItem = new GraphQLObjectType({
 			resolve (parent, args, req) {
 				return fetch(parent.uri, req).then(d => d.exercises);
 			}
+		},
+		comments: {
+			type: new GraphQLList(CommentType),
+			resolve (parent, args, req) {
+				return fetch(parent.uri, req)
+					.then(d => fetch(d.comments, req))
+					.then(c => c.comments);
+			}
 		}
 	}
 });
 
 
-module.exports = new GraphQLObjectType({
+const StrengthTrainingActivities = new GraphQLObjectType({
 	name: 'StrengthTrainingActivities',
 	fields: {
 		size: { type: GraphQLInt },
 		items: {
 			type: new GraphQLList(StrengthTrainingItem),
-			args,
-			resolve
+			args: resolveItems.args,
+			resolve: resolveItems.resolve
 		}
 	}
 });
+
+module.exports = {
+	StrengthTrainingItem,
+	StrengthTrainingActivities
+};

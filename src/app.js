@@ -2,14 +2,11 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const log = require('./helpers/logging');
 const path = require('path');
-const HealthGraphLoader = require('./middleware/healthgraph-loader');
-
 
 /*  Create application */
 const app = express();
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(HealthGraphLoader);
 
 /* Server settings */
 app.set('view engine', 'ejs');

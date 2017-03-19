@@ -107,43 +107,43 @@ const FitnessItem = new GraphQLObjectType({
 	fields: {
 		activity: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.ACTIVITY'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.activity);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.activity);
 			},
 			type: GraphQLString
 		},
 		average_heart_rate: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.AVERAGE_HEART_RATE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.average_heart_rate);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.average_heart_rate);
 			},
 			type: GraphQLInt
 		},
 		calories: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.CALORIES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.calories);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.calories);
 			},
 			type: new GraphQLList(FitnessCalories)
 		},
 		climb: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.CLIMB'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.climb);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.climb);
 			},
 			type: GraphQLInt
 		},
 		comments: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.COMMENTS'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => req.healthGraphLoader.load(d.comments)).then(c => c.comments);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => context.healthGraphLoader.load(d.comments)).then(c => c.comments);
 			},
 			type: new GraphQLList(CommentType)
 		},
 		distance: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.DISTANCE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.distance);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.distance);
 			},
 			type: new GraphQLList(FitnessDistance)
 		},
@@ -158,8 +158,8 @@ const FitnessItem = new GraphQLObjectType({
 		equipment: {
 
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.EQUIPMENT'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.equipment);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.equipment);
 			},
 			type: GraphQLString
 		},
@@ -169,58 +169,58 @@ const FitnessItem = new GraphQLObjectType({
 		},
 		heart_rate: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.HEART_RATE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.heart_rate);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.heart_rate);
 			},
 			type: new GraphQLList(FitnessHeartRate)
 		},
 		images: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.IMAGES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.images);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.images);
 			},
 			type: new GraphQLList(FitnessImage)
 		},
 		is_live: {
 
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.IS_LIVE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.is_live);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.is_live);
 			},
 			type: GraphQLBoolean
 		},
 		notes: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.NOTES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.notes);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.notes);
 			},
 			type: GraphQLString
 		},
 		path: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.PATH'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.path);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.path);
 			},
 			type: new GraphQLList(FitnessPath)
 		},
 		secondary_type: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.SECONDARY_TYPE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.secondary_type);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.secondary_type);
 			},
 			type: GraphQLString
 		},
 		share: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.SHARE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.share);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.share);
 			},
 			type: GraphQLString
 		},
 		share_map: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.SHARE_MAP'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.share_map);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.share_map);
 			},
 			type: GraphQLString
 		},
@@ -250,8 +250,8 @@ const FitnessItem = new GraphQLObjectType({
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.USERID'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.userID);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.userID);
 			},
 			type: GraphQLString
 		},

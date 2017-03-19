@@ -1,10 +1,10 @@
 const request = require('superagent-promise')(require('superagent'), Promise);
 const DataLoader = require('dataloader');
-const log = require('./../helpers/logging');
+const log = require('./logging');
 
-module.exports = function createLoader (req, res, next) {
+module.exports = function createLoader (req) {
 
-	const HealthGraphLoader = new DataLoader(
+	return new DataLoader(
 		urls => Promise.all(urls.map(uri => {
 
 			log.info('HEALTHGRAPH_REQUEST', {uri});
@@ -19,9 +19,5 @@ module.exports = function createLoader (req, res, next) {
 
 		}))
 	);
-
-	req.healthGraphLoader = HealthGraphLoader; // eslint-disable-line no-param-reassign
-
-	next();
 
 };

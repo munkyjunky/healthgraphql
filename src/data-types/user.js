@@ -11,35 +11,35 @@ module.exports = new GraphQLObjectType({
 	fields: {
 		fitness_activities: {
 			description: i18n.t('GRAPHQL.USER.FITNESS_ACTIVITIES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader
+			resolve (parent, args, context) {
+				return context.healthGraphLoader
 					.load('/user')
-					.then(data => req.healthGraphLoader.load(data.fitness_activities));
+					.then(data => context.healthGraphLoader.load(data.fitness_activities));
 			},
 			type: FitnessActivitiesType
 		},
 		profile: {
 			description: i18n.t('GRAPHQL.USER.PROFILE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader
+			resolve (parent, args, context) {
+				return context.healthGraphLoader
 					.load('/user')
-					.then(data => req.healthGraphLoader.load(data.profile));
+					.then(data => context.healthGraphLoader.load(data.profile));
 			},
 			type: ProfileType
 		},
 		strength_training_activities: {
 			description: i18n.t('GRAPHQL.USER.STRENGTH_TRAINING_ACTIVITIES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader
+			resolve (parent, args, context) {
+				return context.healthGraphLoader
 					.load('/user')
-					.then(data => req.healthGraphLoader.load(data.strength_training_activities));
+					.then(data => context.healthGraphLoader.load(data.strength_training_activities));
 			},
 			type: StrengthTrainingActivitiesType
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.USER.USERID'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader
+			resolve (parent, args, context) {
+				return context.healthGraphLoader
 					.load('/user')
 					.then(data => data.userID);
 			},

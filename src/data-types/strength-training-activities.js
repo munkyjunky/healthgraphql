@@ -64,31 +64,31 @@ const StrengthTrainingItem = new GraphQLObjectType({
 	fields: {
 		comments: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.COMMENTS'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri)
-					.then(d => req.healthGraphLoader.load(d.comments))
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri)
+					.then(d => context.healthGraphLoader.load(d.comments))
 					.then(c => c.comments);
 			},
 			type: new GraphQLList(CommentType)
 		},
 		exercises: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.EXERCISES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.exercises);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.exercises);
 			},
 			type: new GraphQLList(StrengthTrainingExercise)
 		},
 		notes: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.NOTES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.notes);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.notes);
 			},
 			type: GraphQLString
 		},
 		source: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.SOURCE'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.source);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.source);
 			},
 			type: GraphQLString
 		},
@@ -98,15 +98,15 @@ const StrengthTrainingItem = new GraphQLObjectType({
 		},
 		total_calories: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.TOTAL_CALORIES'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.total_calories);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.total_calories);
 			},
 			type: GraphQLInt
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.USERID'),
-			resolve (parent, args, req) {
-				return req.healthGraphLoader.load(parent.uri).then(d => d.userID);
+			resolve (parent, args, context) {
+				return context.healthGraphLoader.load(parent.uri).then(d => d.userID);
 			},
 			type: GraphQLString
 		}

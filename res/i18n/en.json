@@ -97,6 +97,8 @@
 				"COMMENTS": "The comments for the activity",
 				"EXERCISES": "The exercises performed during this strength training activity",
 				"NOTES": "Any notes that the user has associated with the activity (max. 1024 characters; optional)",
+				"POST_TO_FACEBOOK": "True to post this activity to Facebook, false to prevent posting (optional; if not specified, the user's default preference is used)",
+				"POST_TO_TWITTER": "True to post this activity to Twitter, false to prevent posting (optional; if not specified, the user's default preference is used)",
 				"SOURCE": "The name of the application that last modified this activity",
 				"START_TIME": "The starting time for the activity (e.g., Sat, 1 Jan 2011 00:00:00)",
 				"TOTAL_CALORIES": "The total calories burned (omitted if not available)",

@@ -1,8 +1,9 @@
 const request = require('superagent-promise')(require('superagent'), Promise);
 const DataLoader = require('dataloader');
 const log = require('./logging');
+const HEALTHGRAPH = require('../constants/healthgraph');
 
-module.exports = function createLoader (req) {
+module.exports = function createLoader (access_token) {
 
 	return new DataLoader(
 		urls => Promise.all(urls.map(uri => {
@@ -10,9 +11,9 @@ module.exports = function createLoader (req) {
 			log.info('HEALTHGRAPH_REQUEST', {uri});
 
 			return request
-				.get(`https://api.runkeeper.com${uri}`)
+				.get(`${HEALTHGRAPH.BASE_URL}${uri}`)
 				.query({
-					access_token: req.cookies.auth
+					access_token
 				})
 				.end()
 				.then(data => data.body);

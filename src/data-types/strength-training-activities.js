@@ -3,6 +3,7 @@ const GraphQLObjectType = graphql.GraphQLObjectType;
 const GraphQLString = graphql.GraphQLString;
 const GraphQLList = graphql.GraphQLList;
 const GraphQLInt = graphql.GraphQLInt;
+const GraphQLFloat = graphql.GraphQLFloat;
 const CommentType = require('./comment');
 const resolveItems = require('../helpers/resolve-items');
 const i18n = require('../helpers/i18n');
@@ -20,7 +21,7 @@ const StrengthTrainingSet = new GraphQLObjectType({
 		},
 		weight: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.SET.WEIGHT'),
-			type: GraphQLInt
+			type: GraphQLFloat
 		}
 	}
 });
@@ -101,14 +102,14 @@ const StrengthTrainingItem = new GraphQLObjectType({
 			resolve (parent, args, context) {
 				return context.healthGraphLoader.load(parent.uri).then(d => d.total_calories);
 			},
-			type: GraphQLInt
+			type: GraphQLFloat
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.USERID'),
 			resolve (parent, args, context) {
 				return context.healthGraphLoader.load(parent.uri).then(d => d.userID);
 			},
-			type: GraphQLString
+			type: GraphQLInt
 		}
 	}
 });

@@ -4,7 +4,7 @@ const GraphQLString = graphql.GraphQLString;
 const i18n = require('../helpers/i18n');
 const HEALTHGRAPH = require('../constants/healthgraph');
 const ProfileType = require('./profile');
-const StrengthTrainingActivitiesType = require('./strength-training-activities').StrengthTrainingActivities;
+const StrengthTrainingActivitiesType = require('./strength-training/activities');
 const FitnessActivitiesType = require('./fitness-activities').FitnessActivities;
 
 module.exports = new GraphQLObjectType({

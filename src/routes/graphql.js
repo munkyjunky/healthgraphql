@@ -3,8 +3,7 @@ const graphql = require('graphql');
 const GraphQLSchema = graphql.GraphQLSchema;
 const UserType = require('../data-types/user');
 const createLoader = require('../helpers/healthgraph-loader');
-const StrengthTrainingType = require('../mutation-types/strength-training-activities');
-
+const createStrengthItem = require('../mutations/strength-training/create-item');
 
 module.exports = function (app) {
 
@@ -24,7 +23,7 @@ module.exports = function (app) {
 					mutation: new graphql.GraphQLObjectType({
 						name: 'healthgraph',
 						fields: {
-							strength_training_activities: StrengthTrainingType
+							create_strength_activity: createStrengthItem
 						}
 					})
 				})

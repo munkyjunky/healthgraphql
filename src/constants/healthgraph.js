@@ -3,6 +3,7 @@ module.exports = {
 	ROOT: '/user',
 
 	CONTENT_TYPES: {
-		strength_training_activities: 'application/vnd.com.runkeeper.NewStrengthTrainingActivity+json'
+		new_strength_training_activities: 'application/vnd.com.runkeeper.NewStrengthTrainingActivity+json',
+		strength_training_activities: 'application/vnd.com.runkeeper.StrengthTrainingActivity+json'
 	}
 };

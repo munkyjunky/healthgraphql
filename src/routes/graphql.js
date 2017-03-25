@@ -4,6 +4,8 @@ const GraphQLSchema = graphql.GraphQLSchema;
 const UserType = require('../data-types/user');
 const createLoader = require('../helpers/healthgraph-loader');
 const createStrengthItem = require('../mutations/strength-training/create-item');
+const deleteStrengthItem = require('../mutations/strength-training/delete-item');
+const editStrengthItem = require('../mutations/strength-training/edit-item');
 
 module.exports = function (app) {
 
@@ -23,7 +25,9 @@ module.exports = function (app) {
 					mutation: new graphql.GraphQLObjectType({
 						name: 'healthgraph',
 						fields: {
-							create_strength_activity: createStrengthItem
+							create_strength_activity: createStrengthItem,
+							delete_strength_activity: deleteStrengthItem,
+							edit_strength_activity: editStrengthItem
 						}
 					})
 				})

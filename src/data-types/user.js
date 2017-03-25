@@ -6,6 +6,7 @@ const HEALTHGRAPH = require('../constants/healthgraph');
 const ProfileType = require('./profile');
 const StrengthTrainingActivitiesType = require('./strength-training/activities');
 const FitnessActivitiesType = require('./fitness-activities').FitnessActivities;
+const nodeField = require('./node-interface').nodeField;
 
 module.exports = new GraphQLObjectType({
 	name: 'User',
@@ -19,6 +20,7 @@ module.exports = new GraphQLObjectType({
 			},
 			type: FitnessActivitiesType
 		},
+		node: nodeField,
 		profile: {
 			description: i18n.t('GRAPHQL.USER.PROFILE'),
 			resolve (parent, args, context) {

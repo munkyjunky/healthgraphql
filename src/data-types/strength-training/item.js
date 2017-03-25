@@ -7,6 +7,9 @@ const GraphQLObjectType = graphql.GraphQLObjectType;
 const StrengthTrainingExercise = require('./exercise');
 const CommentType = require('../comment');
 const i18n = require('../../helpers/i18n');
+const nodeInterface = require('../node-interface').nodeInterface;
+const toGlobalId = require('graphql-relay').toGlobalId;
+const globalIdTypes = require('../../constants/global-id-types');
 
 module.exports = new GraphQLObjectType({
 	name: 'StrengthTrainingItem',
@@ -26,6 +29,12 @@ module.exports = new GraphQLObjectType({
 				return context.healthGraphLoader.load(parent.uri).then(d => d.exercises);
 			},
 			type: new GraphQLList(StrengthTrainingExercise)
+		},
+		id: {
+			resolve (parent) {
+				return toGlobalId(globalIdTypes.strength_training_activities, parent.uri);
+			},
+			type: new graphql.GraphQLNonNull(graphql.GraphQLID)
 		},
 		notes: {
 			description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.NOTES'),
@@ -59,5 +68,6 @@ module.exports = new GraphQLObjectType({
 			},
 			type: GraphQLInt
 		}
-	}
+	},
+	interfaces: [ nodeInterface ]
 });

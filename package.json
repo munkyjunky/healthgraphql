@@ -26,6 +26,7 @@
 		"express": "^4.15.2",
 		"express-graphql": "^0.6.3",
 		"graphql": "^0.9.1",
+		"graphql-relay": "^0.5.1",
 		"node-polyglot": "^2.2.2",
 		"superagent": "^3.5.0",
 		"superagent-promise": "^1.1.0",

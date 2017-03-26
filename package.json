@@ -1,8 +1,8 @@
 {
-	"name": "healthgraph-middleware",
+	"name": "healthgraphql",
 	"version": "0.0.0",
-	"description": "Healthgraph API middleware",
-	"main": "src/app.js",
+	"description": "GraphQL route handler for accessing the Healthgraph API",
+	"main": "src/healthgrahql.js",
 	"license": "MIT",
 	"config": {
 		"commitizen": {
@@ -16,25 +16,22 @@
 		"cz-conventional-changelog": "^2.0.0",
 		"eslint": "^3.17.1",
 		"eslint-config-degree53-core": "^3.0.11",
-		"eslint-config-degree53-es6": "^3.0.1",
-		"nodemon": "^1.11.0"
+		"eslint-config-degree53-es6": "^3.0.1"
 	},
 	"dependencies": {
-		"cookie-parser": "^1.4.3",
 		"dataloader": "^1.3.0",
-		"ejs": "^2.5.6",
-		"express": "^4.15.2",
 		"express-graphql": "^0.6.3",
 		"graphql": "^0.9.1",
 		"graphql-relay": "^0.5.1",
 		"node-polyglot": "^2.2.2",
 		"superagent": "^3.5.0",
-		"superagent-promise": "^1.1.0",
-		"winston": "^2.3.1"
+		"superagent-promise": "^1.1.0"
+	},
+	"engines": {
+		"node": ">6.10.0"
 	},
 	"scripts": {
-		"lint": "eslint src/",
-		"start": "nodemon src/app.js"
+		"lint": "eslint src/"
 	},
 	"eslintConfig": {
 		"env": {

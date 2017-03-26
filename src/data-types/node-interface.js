@@ -3,7 +3,7 @@ const nodeDefinitions = require('graphql-relay').nodeDefinitions;
 
 const { nodeInterface, nodeField } = nodeDefinitions(
 	(globalId, context) => {
-		const { type, id } = fromGlobalId(globalId);
+		const { id } = fromGlobalId(globalId);
 		return context.healthGraphLoader.load(id);
 	},
 	object => {

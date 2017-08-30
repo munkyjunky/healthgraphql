@@ -8,8 +8,8 @@ const deleteStrengthItem = require('mutations/strength-training/delete-item');
 const editStrengthItem = require('mutations/strength-training/edit-item');
 
 const DEFAULTS = {
-	getAccessToken () { },
-	graphiql: false
+	getAccessToken (req) { return req.headers.authorization || req.params.access_token },
+	graphiql: process.env.NODE_ENV !== 'production'
 };
 
 /**

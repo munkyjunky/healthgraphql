@@ -1,11 +1,11 @@
 const graphqlHTTP = require('express-graphql');
 const graphql = require('graphql');
 const GraphQLSchema = graphql.GraphQLSchema;
-const UserType = require('data-types/user');
-const createLoader = require('helpers/healthgraph-loader');
-const createStrengthItem = require('mutations/strength-training/create-item');
-const deleteStrengthItem = require('mutations/strength-training/delete-item');
-const editStrengthItem = require('mutations/strength-training/edit-item');
+const UserType = require('./data-types/user');
+const createLoader = require('./helpers/healthgraph-loader');
+const createStrengthItem = require('./mutations/strength-training/create-item');
+const deleteStrengthItem = require('./mutations/strength-training/delete-item');
+const editStrengthItem = require('./mutations/strength-training/edit-item');
 
 const DEFAULTS = {
 	getAccessToken (req) { return req.headers.authorization || req.params.access_token },

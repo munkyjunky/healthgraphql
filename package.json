@@ -1,6 +1,6 @@
 {
   "name": "@munkyjunky/healthgraphql",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "GraphQL route handler for accessing the Healthgraph API",
   "main": "src/healthgrahql.js",
   "license": "MIT",

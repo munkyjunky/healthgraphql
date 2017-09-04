@@ -40,7 +40,8 @@
   "scripts": {
     "start": "node app.js",
     "lint": "eslint src/",
-    "test": "jest"
+    "test": "jest",
+    "version": "conventional-changelog -i CHANGELOG.md -r 0 -s"
   },
   "eslintConfig": {
     "env": {

@@ -20,6 +20,8 @@
     "eslint-config-degree53-es6": "^3.0.1",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "jest": "^20.0.4",
+    "nock": "^9.0.14",
     "passport": "^0.4.0",
     "passport-runkeeper": "^0.1.2"
   },
@@ -37,7 +39,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "test": "jest"
   },
   "eslintConfig": {
     "env": {
@@ -118,7 +121,7 @@
         }
       ],
       "valid-jsdoc": [
-        2,
+        1,
         {
           "matchDescription": "^[\\&\\w\\s/\\-\\.\\'\\,\\(\\)\\<\\>/]+$",
           "prefer": {
@@ -146,5 +149,10 @@
   "bugs": {
     "url": "https://github.com/munkyjunky/healthgraphql/issues"
   },
-  "homepage": "https://github.com/munkyjunky/healthgraphql#readme"
+  "homepage": "https://github.com/munkyjunky/healthgraphql#readme",
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/test/"
+    ]
+  }
 }

@@ -100,7 +100,7 @@ module.exports = {
 					start_time: new Date(args.start_time).toGMTString()
 				}))
 				.end()
-				.then((res) =>
+				.then(res =>
 					// fetch the newly saved response
 					context.healthGraphLoader.load(res.header.location)
 				)

@@ -102,13 +102,13 @@ module.exports = {
 			.type(HEALTHGRAPH.CONTENT_TYPES.strength_training_activities)
 			.query({access_token: context.access_token})
 			.send(Object.assign(args, args.start_time ? {
-					start_time: new Date(args.start_time).toGMTString()
-				} : {}))
+				start_time: new Date(args.start_time).toGMTString()
+			} : {}))
 			.end()
-			.then((res) =>
+			.then(() =>
 				// fetch the newly saved response
 				context.healthGraphLoader.load(id)
-			)
+			);
 
 	},
 

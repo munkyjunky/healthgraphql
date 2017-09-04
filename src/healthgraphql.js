@@ -8,16 +8,18 @@ const deleteStrengthItem = require('./mutations/strength-training/delete-item');
 const editStrengthItem = require('./mutations/strength-training/edit-item');
 
 const DEFAULTS = {
-	getAccessToken (req) { return req.headers.authorization || req.params.access_token },
+	getAccessToken (req) {
+		return req.headers.authorization || req.params.access_token;
+	},
 	graphiql: process.env.NODE_ENV !== 'production'
 };
 
 /**
- *
+ * Creates HealthgraphQL middleware
  * @param {object} options - Configuration object
- * @param {boolean} [options.graphiql=false] - Enable graphiql interface
+ * @param {boolean} options.graphiql - Enable graphiql interface
  * @param {function} options.getAccessToken - Function to get the access token to be used for the request to the Healthgraph
- * @returns {*}
+ * @returns {*} HealthgraphQL middleware
  */
 module.exports = function (options = {}) {
 
@@ -45,7 +47,7 @@ module.exports = function (options = {}) {
 					}
 				})
 			})
-		}
+		};
 	});
 
 };

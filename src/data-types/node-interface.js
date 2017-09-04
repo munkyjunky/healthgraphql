@@ -10,6 +10,8 @@ const { nodeInterface, nodeField } = nodeDefinitions(
 		if (object.hasOwnProperty('exercises')) {
 			return 'StrengthTrainingItem';
 		}
+
+		return null;
 	}
 );
 

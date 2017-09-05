@@ -153,7 +153,8 @@
   "homepage": "https://github.com/munkyjunky/healthgraphql#readme",
   "jest": {
     "coveragePathIgnorePatterns": [
-      "/test/"
+      "/test/",
+      "**/*.spec.js"
     ]
   }
 }

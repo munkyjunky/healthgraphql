@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile should return correct profile information 1`] = `
+Object {
+  "data": Object {
+    "profile": Object {
+      "birthday": "Sat, 1 Jan 2011 00:00:00",
+      "location": "London, UK",
+      "name": "Test User",
+    },
+  },
+}
+`;
+
+exports[`Profile should return the correct userID 1`] = `
+Object {
+  "data": Object {
+    "userID": "1234567890",
+  },
+}
+`;

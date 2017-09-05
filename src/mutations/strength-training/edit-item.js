@@ -1,17 +1,9 @@
 const HEALTHGRAPH = require('../../constants/healthgraph');
-const graphql = require('graphql');
-const GraphQLString = graphql.GraphQLString;
-const GraphQLInputObjectType = graphql.GraphQLInputObjectType;
-const GraphQLNonNull = graphql.GraphQLNonNull;
-const GraphQLInt = graphql.GraphQLInt;
-const GraphQLBoolean = graphql.GraphQLBoolean;
-const GraphQLList = graphql.GraphQLList;
-const GraphQLFloat = graphql.GraphQLFloat;
-const GraphQLID = graphql.GraphQLID;
+const {GraphQLString, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLNonNull, GraphQLInputObjectType, GraphQLBoolean, GraphQLID} = require('graphql');
 const i18n = require('../../helpers/i18n');
-const fromGlobalId = require('graphql-relay').fromGlobalId;
+const {fromGlobalId} = require('graphql-relay');
 const request = require('superagent-promise')(require('superagent'), Promise);
-const StrengthTrainingItem = require('../../data-types/strength-training/item');
+const {StrengthTrainingItem} = require('../../data-types/strength-training');
 const MuscleTypes = require('../../data-types/strength-training/muscle-types');
 const ExerciseTypes = require('../../data-types/strength-training/exercise-types');
 

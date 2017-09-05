@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const fromGlobalId = require('graphql-relay').fromGlobalId;
+const {fromGlobalId} = require('graphql-relay');
 const request = require('superagent-promise')(require('superagent'), Promise);
 const HEALTHGRAPH = require('../../constants/healthgraph');
 

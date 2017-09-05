@@ -1,7 +1,5 @@
-const graphql = require('graphql');
-const GraphQLObjectType = graphql.GraphQLObjectType;
-const GraphQLString = graphql.GraphQLString;
-const i18n = require('../helpers/i18n');
+const {GraphQLString, GraphQLObjectType} = require('graphql');
+const i18n = require('../../helpers/i18n');
 
 module.exports = new GraphQLObjectType({
 	name: 'Comment',

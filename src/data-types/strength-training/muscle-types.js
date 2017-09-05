@@ -1,5 +1,4 @@
-const graphql = require('graphql');
-const GraphQLEnumType = graphql.GraphQLEnumType;
+const {GraphQLEnumType} = require('graphql');
 
 module.exports = new GraphQLEnumType({
 	name: 'MuscleTypes',

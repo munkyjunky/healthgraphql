@@ -1,12 +1,10 @@
-const graphql = require('graphql');
-const GraphQLObjectType = graphql.GraphQLObjectType;
-const GraphQLString = graphql.GraphQLString;
-const i18n = require('../helpers/i18n');
-const HEALTHGRAPH = require('../constants/healthgraph');
-const ProfileType = require('./profile');
-const StrengthTrainingActivitiesType = require('./strength-training/activities');
-const FitnessActivitiesType = require('./fitness-activities').FitnessActivities;
-const nodeField = require('./node-interface').nodeField;
+const {GraphQLString, GraphQLObjectType} = require('graphql');
+const i18n = require('../../helpers/i18n');
+const HEALTHGRAPH = require('../../constants/healthgraph');
+const ProfileType = require('../profile');
+const {StrengthTrainingActivities} = require('../strength-training');
+const {FitnessActivities} = require('../fitness-activites');
+const nodeField = require('../node-interface').nodeField;
 
 module.exports = new GraphQLObjectType({
 	name: 'User',
@@ -18,7 +16,7 @@ module.exports = new GraphQLObjectType({
 					.load(HEALTHGRAPH.ROOT)
 					.then(data => context.healthGraphLoader.load(data.fitness_activities));
 			},
-			type: FitnessActivitiesType
+			type: FitnessActivities
 		},
 		node: nodeField,
 		profile: {
@@ -37,7 +35,7 @@ module.exports = new GraphQLObjectType({
 					.load(HEALTHGRAPH.ROOT)
 					.then(data => context.healthGraphLoader.load(data.strength_training_activities));
 			},
-			type: StrengthTrainingActivitiesType
+			type: StrengthTrainingActivities
 		},
 		userID: {
 			description: i18n.t('GRAPHQL.USER.USERID'),

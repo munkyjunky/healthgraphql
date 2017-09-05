@@ -1,12 +1,7 @@
-const graphql = require('graphql');
-const GraphQLObjectType = graphql.GraphQLObjectType;
-const GraphQLString = graphql.GraphQLString;
-const GraphQLList = graphql.GraphQLList;
-const GraphQLInt = graphql.GraphQLInt;
-const GraphQLBoolean = graphql.GraphQLBoolean;
-const CommentType = require('./comment');
-const resolveItems = require('../helpers/resolve-items');
-const i18n = require('../helpers/i18n');
+const {GraphQLString, GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLBoolean} = require('graphql');
+const CommentType = require('../comment');
+const resolveItems = require('../../helpers/resolve-items');
+const i18n = require('../../helpers/i18n');
 
 const FitnessDistance = new GraphQLObjectType({
 	name: 'Distance',
@@ -23,7 +18,7 @@ const FitnessDistance = new GraphQLObjectType({
 });
 
 const FitnessHeartRate = new GraphQLObjectType({
-	name: 'HeartRate',
+	name: 'Heart_Rate',
 	fields: {
 		heart_rate: {
 			description: i18n.t('GRAPHQL.FITNESS.HEART_RATE.HEART_RATE'),
@@ -103,7 +98,7 @@ const FitnessImage = new GraphQLObjectType({
 });
 
 const FitnessItem = new GraphQLObjectType({
-	name: 'FitnessItem',
+	name: 'Item',
 	fields: {
 		activity: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.ACTIVITY'),
@@ -263,7 +258,7 @@ const FitnessItem = new GraphQLObjectType({
 });
 
 const FitnessActivities = new GraphQLObjectType({
-	name: 'FitnessActivities',
+	name: 'Activities',
 	fields: {
 		size: {
 			description: i18n.t('GRAPHQL.FITNESS.ACTIVITIES.SIZE'),
@@ -280,5 +275,10 @@ const FitnessActivities = new GraphQLObjectType({
 
 module.exports = {
 	FitnessActivities,
-	FitnessItem
+	FitnessItem,
+	FitnessCalories,
+	FitnessDistance,
+	FitnessHeartRate,
+	FitnessImage,
+	FitnessPath
 };

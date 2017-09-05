@@ -23,7 +23,7 @@ describe('Profile', () => {
         const query = `{ userID }`;
 
         return healthgraphql(query).then(res => {
-            expect(res.data.userID).toEqual('1234567890');
+            expect(res).toMatchSnapshot();
         });
 
     });
@@ -31,7 +31,7 @@ describe('Profile', () => {
     it('should return correct profile information', () => {
 
         const query = `{
-            profile { 
+            profile {
                 name,
                 location,
                 birthday
@@ -39,12 +39,7 @@ describe('Profile', () => {
         }`;
 
         return healthgraphql(query).then(res => {
-            const {profile} = res.data;
-
-            expect(profile).not.toBeNull();
-            expect(profile.name).toEqual(profileResponse.name);
-            expect(profile.location).toEqual(profileResponse.location);
-            expect(profile.birthday).toEqual(profileResponse.birthday);
+            expect(res).toMatchSnapshot();
         });
 
     });

@@ -89,19 +89,23 @@ const StrengthTrainingItem = new GraphQLObjectType({
             resolve(parent, args, context) {
                 return context.healthGraphLoader.load(parent.uri).then(d => context.healthGraphLoader.load(d.nearest_fitness_activity));
             },
-            type: FitnessItem
+            get type() {
+                return require('../fitness-activites').FitnessItem;
+            }
         },
         nearest_teammate_fitness_activities: {
             resolve(parent, args, context) {
                 return context.healthGraphLoader.load(parent.uri).then(d => context.healthGraphLoader.loadMany(d.nearest_teammate_fitness_activities));
             },
-            type: new GraphQLList(FitnessItem)
+            get type() {
+                return new GraphQLList(require('../fitness-activites').FitnessItem);
+            }
         },
         nearest_teammate_strength_training_activities: {
             resolve(parent, args, context) {
                 return context.healthGraphLoader.load(parent.uri).then(d => context.healthGraphLoader.loadMany(d.nearest_teammate_strength_training_activities))
             },
-            get type () {
+            get type() {
                 return new GraphQLList(StrengthTrainingItem);
             }
         },

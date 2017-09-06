@@ -4,7 +4,7 @@ const resolveItems = require('../../helpers/resolve-items');
 const i18n = require('../../helpers/i18n');
 
 const FitnessDistance = new GraphQLObjectType({
-	name: 'Distance',
+	name: 'FitnessDistance',
 	fields: {
 		distance: {
 			description: i18n.t('GRAPHQL.FITNESS.DISTANCE.DISTANCE'),
@@ -18,7 +18,7 @@ const FitnessDistance = new GraphQLObjectType({
 });
 
 const FitnessHeartRate = new GraphQLObjectType({
-	name: 'Heart_Rate',
+	name: 'FitnessHeartRate',
 	fields: {
 		heart_rate: {
 			description: i18n.t('GRAPHQL.FITNESS.HEART_RATE.HEART_RATE'),
@@ -32,7 +32,7 @@ const FitnessHeartRate = new GraphQLObjectType({
 });
 
 const FitnessCalories = new GraphQLObjectType({
-	name: 'Calories',
+	name: 'FitnessCalories',
 	fields: {
 		calories: {
 			description: i18n.t('GRAPHQL.FITNESS.CALORIES.CALORIES'),
@@ -46,7 +46,7 @@ const FitnessCalories = new GraphQLObjectType({
 });
 
 const FitnessPath = new GraphQLObjectType({
-	name: 'Path',
+	name: 'FitnessPath',
 	fields: {
 		altitude: {
 			description: i18n.t('GRAPHQL.FITNESS.PATH.ALTITUDE'),
@@ -72,7 +72,7 @@ const FitnessPath = new GraphQLObjectType({
 });
 
 const FitnessImage = new GraphQLObjectType({
-	name: 'Image',
+	name: 'FitnessImage',
 	fields: {
 		latitude: {
 			description: i18n.t('GRAPHQL.FITNESS.IMAGE.LATITUDE'),
@@ -98,7 +98,7 @@ const FitnessImage = new GraphQLObjectType({
 });
 
 const FitnessItem = new GraphQLObjectType({
-	name: 'Item',
+	name: 'FitnessItem',
 	fields: {
 		activity: {
 			description: i18n.t('GRAPHQL.FITNESS.ITEM.ACTIVITY'),
@@ -258,7 +258,7 @@ const FitnessItem = new GraphQLObjectType({
 });
 
 const FitnessActivities = new GraphQLObjectType({
-	name: 'Activities',
+	name: 'FitnessActivities',
 	fields: {
 		size: {
 			description: i18n.t('GRAPHQL.FITNESS.ACTIVITIES.SIZE'),

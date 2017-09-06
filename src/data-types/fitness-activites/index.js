@@ -2,7 +2,6 @@ const {GraphQLString, GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLBoolean
 const CommentType = require('../comment');
 const resolveItems = require('../../helpers/resolve-items');
 const i18n = require('../../helpers/i18n');
-const {StrengthTrainingItem} = require('../strength-training');
 
 const FitnessDistance = new GraphQLObjectType({
     name: 'FitnessDistance',

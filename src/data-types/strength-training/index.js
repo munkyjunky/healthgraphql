@@ -5,8 +5,6 @@ const CommentType = require('../comment');
 const nodeInterface = require('../node-interface').nodeInterface;
 const toGlobalId = require('graphql-relay').toGlobalId;
 const globalIdTypes = require('../../constants/global-id-types');
-const {FitnessItem} = require('../fitness-activites');
-
 
 const StrengthTrainingSet = new GraphQLObjectType({
     name: 'StrengthTrainingSet',

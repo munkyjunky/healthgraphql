@@ -1,6 +1,7 @@
-const {GraphQLString, GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLNonNull, GraphQLID} = require('graphql');
+const {GraphQLString, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLNonNull, GraphQLID} = require('graphql');
 const {StrengthTrainingActivities, StrengthTrainingExercise, StrengthTrainingSet, StrengthTrainingItem} = require('./index');
 const CommentType = require('../comment');
+const {FitnessItem} = require('../fitness-activites');
 
 describe('Strength Training', () => {
 
@@ -35,11 +36,13 @@ describe('Strength Training', () => {
     describe('StrengthTrainingItem', () => {
 
         it('should have the correct schema', () => {
-            const {comments, exercises, id, notes, source, start_time, total_calories, userID} = StrengthTrainingItem.getFields();
+            const {comments, exercises, id, nearest_fitness_activity, nearest_teammate_fitness_activities, notes, source, start_time, total_calories, userID} = StrengthTrainingItem.getFields();
 
             expect(comments.type).toEqual(new GraphQLList(CommentType));
             expect(exercises.type).toEqual(new GraphQLList(StrengthTrainingExercise));
             expect(id.type).toEqual(new GraphQLNonNull(GraphQLID));
+            expect(nearest_fitness_activity.type).toEqual(FitnessItem);
+            expect(nearest_teammate_fitness_activities.type).toEqual(new GraphQLList(FitnessItem));
             expect(notes.type).toEqual(GraphQLString);
             expect(source.type).toEqual(GraphQLString);
             expect(start_time.type).toEqual(GraphQLString);

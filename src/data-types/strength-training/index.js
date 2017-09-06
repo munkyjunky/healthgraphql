@@ -5,6 +5,7 @@ const CommentType = require('../comment');
 const nodeInterface = require('../node-interface').nodeInterface;
 const toGlobalId = require('graphql-relay').toGlobalId;
 const globalIdTypes = require('../../constants/global-id-types');
+const {FitnessItem} = require('../fitness-activites');
 
 
 const StrengthTrainingSet = new GraphQLObjectType({
@@ -83,6 +84,18 @@ const StrengthTrainingItem = new GraphQLObjectType({
                 return toGlobalId(globalIdTypes.strength_training_activities, parent.uri);
             },
             type: new GraphQLNonNull(GraphQLID)
+        },
+        nearest_fitness_activity: {
+            resolve(parent, args, context) {
+                return context.healthGraphLoader.load(parent.uri).then(d => context.healthGraphLoader.load(d.nearest_fitness_activity))
+            },
+            type: FitnessItem
+        },
+        nearest_teammate_fitness_activities: {
+            resolve(parent, args, context) {
+                return context.healthGraphLoader.load(parent.uri).then(d => context.healthGraphLoader.loadMany(d.nearest_teammate_fitness_activities))
+            },
+            type: new GraphQLList(FitnessItem)
         },
         notes: {
             description: i18n.t('GRAPHQL.STRENGTH_TRAINING.ITEM.NOTES'),

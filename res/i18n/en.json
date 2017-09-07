@@ -79,6 +79,13 @@
 			"PROFILE": "The URL of the user's public, human-readable profile on the Runkeeper Web site",
 			"SMALL_PICTURE": "The URI of the small (50×50 pixels) version of the user's profile picture on the Runkeeper Web site (omitted if the user has no such picture)"
 		},
+		"RECORDS": {
+			"ACTIVITY_TYPE": "The type of activity, as one of the following values: Running, Cycling, Mountain Biking, Walking, Hiking, Downhill Skiing, Cross-Country Skiing, Snowboarding, Skating, Swimming, Wheelchair, Rowing, Elliptical, Other",
+			"DATE": "The date of the record (e.g., Sat, 1 Jan 2011 00:00:00)",
+			"STATS": "The statistics for the activity type (empty if no records are available)",
+			"STAT_TYPE": "The type of statistic, as one of the following values: BEST_ACTIVITY, BEST_WEEK, LAST_WEEK, THIS_WEEK, BEST_MONTH, LAST_MONTH, THIS_MONTH, OVERALL",
+			"VALUE": "The record distance value"
+		},
 		"STRENGTH_TRAINING": {
 			"ACTIVITIES": {
 				"ITEMS": "The user’s activities, from newest to oldest",

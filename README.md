@@ -1,4 +1,5 @@
 # HealthGraphQL
+**_This repository is here for reference purposes only, as the HealthGraph API by RunKeeper is no longer publically available_**
 
 A GraphQL wrapper around the Health Graph, to support reading and writing data.
 
